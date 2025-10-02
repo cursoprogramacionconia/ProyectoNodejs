@@ -29,7 +29,53 @@ poolPromise.catch((error) => {
 });
 
 app.get('/', (req, res) => {
-  res.redirect('/dashboard');
+  res.redirect('/login');
+});
+
+app.get('/login', (req, res) => {
+  const { error } = req.query;
+  const errorMessage =
+    error === '1' ? 'Usuario no válido. Verifica tus credenciales.' : null;
+
+  res.render('login', { error: errorMessage });
+});
+
+app.post('/login', async (req, res) => {
+  const { correo, password } = req.body;
+
+  if (!correo || !password) {
+    return res.status(400).render('login', {
+      error: 'Debes proporcionar un correo y una contraseña.',
+    });
+  }
+
+  try {
+    const pool = await poolPromise;
+    const request = pool.request();
+    request.input('correo', sql.VarChar(50), correo);
+    request.input('password', sql.VarChar(50), password);
+
+    const result = await request.query(`
+      SELECT TOP 1 id
+      FROM dbo.usuario
+      WHERE correo = @correo
+        AND [password] = @password
+        AND activo = 1;
+    `);
+
+    if (result.recordset?.length) {
+      return res.redirect('/dashboard');
+    }
+
+    return res.status(401).render('login', {
+      error: 'Usuario no válido. Verifica tus credenciales.',
+    });
+  } catch (error) {
+    console.error('Error al iniciar sesión', error);
+    return res.status(500).render('login', {
+      error: 'Ocurrió un error al iniciar sesión. Inténtalo nuevamente.',
+    });
+  }
 });
 
 app.get('/dashboard', (req, res) => {

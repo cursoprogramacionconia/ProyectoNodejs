@@ -6,7 +6,7 @@ const port = 3000;
 
 
 app.get('/', (req, res) => {
-      res.send('Mi proyecto Codex'); 
+      res.send('Mi proyecto Codex ejemplo'); 
 });
 
 app.listen(port,()=>{{

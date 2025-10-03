@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentación del Proyecto</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --primary: #2563eb;
+        --primary-dark: #1e3a8a;
+        --background: #f8fafc;
+        --text: #0f172a;
+        --muted: #64748b;
+        --card: #ffffffcc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+        color: var(--text);
+      }
+
+      header {
+        background: radial-gradient(circle at top right, var(--primary), var(--primary-dark));
+        color: #fff;
+        padding: 4rem 1.5rem 3rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
+        opacity: 0.15;
+        pointer-events: none;
+      }
+
+      header h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        margin-bottom: 0.75rem;
+      }
+
+      header p {
+        font-size: clamp(1rem, 3vw, 1.25rem);
+        margin: 0 auto;
+        max-width: 720px;
+        line-height: 1.6;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: -3rem auto 4rem;
+        padding: 0 1.5rem 4rem;
+      }
+
+      section {
+        background: var(--card);
+        backdrop-filter: blur(6px);
+        border-radius: 18px;
+        box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.2);
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+      }
+
+      p {
+        line-height: 1.75;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      ul,
+      ol {
+        margin: 0 0 1.5rem 1.5rem;
+        padding: 0;
+        color: var(--text);
+      }
+
+      li {
+        margin-bottom: 0.75rem;
+      }
+
+      strong {
+        color: var(--primary-dark);
+      }
+
+      .grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .grid-cols-2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 0.85rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+      }
+
+      th {
+        background-color: rgba(37, 99, 235, 0.12);
+        color: var(--primary-dark);
+        font-weight: 600;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1.5rem 3rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Documentación del Proyecto Clínico</h1>
+      <p>
+        Guía completa para desplegar, configurar y utilizar la plataforma de gestión
+        clínica desarrollada con Node.js, Express y Microsoft SQL Server.
+      </p>
+    </header>
+    <main>
+      <section>
+        <h2>1. Visión General</h2>
+        <p>
+          Esta solución permite gestionar procesos clave de una clínica u hospital, desde el
+          acceso seguro de usuarios hasta el registro de consultas médicas y la administración
+          de profesionales. Utiliza una arquitectura modular basada en Express, EJS para la capa
+          de presentación y un origen de datos centralizado en SQL Server.
+        </p>
+        <div class="grid grid-cols-2">
+          <div>
+            <h3>Objetivos Principales</h3>
+            <ul>
+              <li>Facilitar el acceso autenticado para el personal autorizado.</li>
+              <li>Centralizar la consulta de datos de pacientes, médicos y atenciones.</li>
+              <li>Ofrecer una API interna para registrar consultas médicas.</li>
+              <li>Proporcionar una base mantenible y extensible para nuevas funcionalidades.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Stack Tecnológico</h3>
+            <ul>
+              <li><strong>Backend:</strong> Node.js 20+, Express.js</li>
+              <li><strong>Vistas:</strong> EJS con HTML responsivo</li>
+              <li><strong>Base de Datos:</strong> Microsoft SQL Server</li>
+              <li><strong>Gestión de dependencias:</strong> npm</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Requisitos Previos</h2>
+        <ul>
+          <li>Node.js versión 20 o superior y npm instalados en el entorno.</li>
+          <li>Instancia disponible de Microsoft SQL Server con acceso de red.</li>
+          <li>Credenciales de un usuario con permisos de lectura/escritura en la base de datos.</li>
+          <li>Variables de entorno configuradas para establecer la conexión con SQL Server.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Configuración Inicial</h2>
+        <ol>
+          <li>
+            <strong>Clonar el repositorio:</strong>
+            <pre><code>git clone &lt;URL-del-repositorio&gt;
+cd ProyectoNodejs</code></pre>
+          </li>
+          <li>
+            <strong>Instalar dependencias:</strong>
+            <pre><code>npm install</code></pre>
+          </li>
+          <li>
+            <strong>Configurar la conexión a SQL Server:</strong>
+            <p>
+              Ajusta el archivo <code>config/conDbSqlServer.js</code> o las variables de entorno para
+              definir servidor, base de datos, usuario y contraseña. La aplicación utiliza un pool de
+              conexiones proporcionado por el driver <code>mssql</code>.
+            </p>
+          </li>
+          <li>
+            <strong>Verificar la base de datos:</strong>
+            <p>
+              Ejecuta los scripts de la carpeta <code>CursoIA.sql</code> para crear tablas, vistas y
+              datos iniciales si es necesario.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>4. Scripts Disponibles</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>npm start</code></td>
+              <td>Inicia el servidor Express en el puerto configurado (por defecto 3000).</td>
+            </tr>
+            <tr>
+              <td><code>npm run dev</code></td>
+              <td>
+                Ejecuta la aplicación con herramientas de recarga en caliente (si está configurado en
+                <code>package.json</code>).
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>5. Rutas Principales de la Aplicación</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Ruta</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>GET /login</code></td>
+              <td>Vista</td>
+              <td>Formulario de autenticación para usuarios registrados.</td>
+            </tr>
+            <tr>
+              <td><code>POST /login</code></td>
+              <td>Acción</td>
+              <td>Valida credenciales contra SQL Server y redirige al panel.</td>
+            </tr>
+            <tr>
+              <td><code>GET /dashboard</code></td>
+              <td>Vista</td>
+              <td>Panel general con acceso a módulos de consultas y administración.</td>
+            </tr>
+            <tr>
+              <td><code>GET /consultas</code></td>
+              <td>Vista</td>
+              <td>Listado de consultas médicas con detalle de pacientes y médicos.</td>
+            </tr>
+            <tr>
+              <td><code>GET /administracion</code></td>
+              <td>Vista</td>
+              <td>Sección de gestión interna para personal autorizado.</td>
+            </tr>
+            <tr>
+              <td><code>GET /api/consultas</code></td>
+              <td>API</td>
+              <td>Devuelve las consultas registradas en formato JSON.</td>
+            </tr>
+            <tr>
+              <td><code>POST /api/consultas</code></td>
+              <td>API</td>
+              <td>Registra una nueva consulta recibiendo datos de médico, paciente y diagnóstico.</td>
+            </tr>
+            <tr>
+              <td><code>GET /api/usuarios</code></td>
+              <td>API</td>
+              <td>Obtiene el listado de usuarios del sistema y su relación con médicos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>6. Flujo de Uso Recomendado</h2>
+        <ol>
+          <li>Acceder a <code>/login</code> e iniciar sesión con credenciales válidas.</li>
+          <li>
+            Desde el panel principal, navegar a <strong>Consultas</strong> para visualizar historial y
+            filtrar atenciones.
+          </li>
+          <li>
+            Utilizar los endpoints <code>/api/consultas</code> para integrar nuevos registros desde
+            otros sistemas o interfaces internas.
+          </li>
+          <li>
+            Administrar usuarios y médicos desde la sección de <strong>Administración</strong>.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>7. Buenas Prácticas</h2>
+        <ul>
+          <li>
+            Mantén las credenciales y parámetros de conexión en variables de entorno o gestores
+            seguros.
+          </li>
+          <li>
+            Implementa HTTPS y controles de sesión adicionales si se despliega en producción.
+          </li>
+          <li>
+            Programa respaldos periódicos de la base de datos y monitorea el tamaño del pool de
+            conexiones.
+          </li>
+          <li>
+            Agrega validaciones adicionales en el lado del cliente para mejorar la experiencia de
+            usuario.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>8. Próximos Pasos</h2>
+        <p>
+          Se recomienda incorporar autenticación basada en tokens, registro de auditorías y
+          dashboards interactivos para ampliar las capacidades de la plataforma. Este documento debe
+          actualizarse con cada nueva funcionalidad relevante.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>
+        © <%= new Date().getFullYear() %> Plataforma Clínica · Creada por el equipo de desarrollo de
+        ProyectoNodejs
+      </p>
+    </footer>
+  </body>
+</html>

@@ -90,6 +90,10 @@ app.get('/administracion', (req, res) => {
   res.render('administracion');
 });
 
+app.get('/documentacion', (req, res) => {
+  res.render('documentacion');
+});
+
 app.get('/api/consultas', async (req, res) => {
   try {
     const pool = await poolPromise;
